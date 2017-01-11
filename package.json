@@ -1,0 +1,20 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "site by express",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajaon/website-meadowlark"
+  },
+  "author": "azat",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    
+  }
+}
