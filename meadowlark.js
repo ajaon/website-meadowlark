@@ -21,23 +21,28 @@ var handlebars = require('express-handlebars').create({
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-
 app.set('port', process.env.PORT || 3000);
-
 
 // static中间件给需要链接的静态文件创建了一个路由，渲染文件并发送给客户端。
 app.use(express.static(__dirname + '/public'));
 
+// set 'showTests' context property if the querystring contains test=1
+app.use(function(req, res, next){
+				res.locals.showTests = app.get('env') !== 'production' &&
+						req.query.test === '1';
+				next();
+});
 
 //创建页面路由
 app.get('/', function(req, res){
-	res.render('home');
+					res.render('home');
 
 });
-app.get('/about', function(req, res){
-
-	res.render('about', { fortune: fortune.getFortune() });
-
+app.get('/about', function(req, res) {
+					res.render('about', {
+									fortune: fortune.getFortune(),
+									pageTestScript: '/qa/tests-about.js'
+					});
 });
 
 
