@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var fortune = require('./lib/fortune.js')
+var fortune = require('./lib/fortune.js');
 
 
 //创建handlebars实例，定义目录为layouts,文件名为main.handlebars的主模版,默认所在文件夹为views
@@ -45,6 +45,12 @@ app.get('/about', function(req, res) {
 					});
 });
 
+app.get('/tours/hood-river', function(req, res){
+				res.render('tours/hood-river');
+});
+app.get('/tours/request-group-rate', function(req, res){
+				res.render('tours/request-group-rate');
+});
 
 //创建页面
 app.use(function(req,res){
